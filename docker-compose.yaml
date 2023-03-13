@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: my-rabbitmq
+    ports:
+      - "5672:5672" # RabbitMQ server
+      - "15672:15672" # RabbitMQ management console
+    volumes:
+      - ./rabbitmq/data:/var/lib/rabbitmq # RabbitMQ data directory
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "rabbitmq_secret_cookie" # Change this to a unique value for your environment
+      RABBITMQ_DEFAULT_USER: "guest" # Change this to your desired username
+      RABBITMQ_DEFAULT_PASS: "guest" # Change this to your desired password
